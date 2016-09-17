@@ -1,0 +1,31 @@
+{
+  "name": "Subsystem",
+  "description": "Payments for small business using Heroku and Stripe",
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "env": {
+    "PK_LIVE": {
+      "description": "Stripe Public Key for Live Mode.",
+      "value": "tbc"
+    },
+    "PK_TEST": {
+      "description": "Stripe Public Key for Test Mode.",
+      "value": "tbc"
+    },
+    "SK_LIVE": {
+      "description": "Stripe Secret Key for Live Mode.",
+      "value": "tbc"
+    },
+    "SK_TEST": {
+      "description": "Stripe Secret Key for Test Mode.",
+      "value": "tbc"
+    },
+    "MANDRILL_KEY": {
+      "description": "API key for Mandrill email, or 0 if disabled.",
+      "value": "0"
+    },
+    "RANDOM_TOKEN": {
+      "description": "A random token, used in hashing, do not change.",
+      "generator": "secret"
+    }
+  },
+}
