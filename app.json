@@ -27,5 +27,5 @@
       "description": "A random token, used in hashing, do not change.",
       "generator": "secret"
     }
-  },
+  }
 }
