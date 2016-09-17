@@ -26,6 +26,10 @@
     "RANDOM_TOKEN": {
       "description": "A random token, used in hashing, do not change.",
       "generator": "secret"
+    },
+    "DB_SCHEMA": {
+      "description": "Schema to use for the database - change if running multiple instances on one db.",
+      "value": "subsystem"
     }
   }
 }
