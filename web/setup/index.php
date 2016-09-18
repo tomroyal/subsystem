@@ -41,7 +41,7 @@ if (pg_num_rows($rs1) != 1){
 }
 else {
 	// already set up
-	$page_out = array('Already Setup','<p>Setup is already complete.</p>');		
+	$page_out = array('Already Setup','Setup is already complete.');		
 };
 
 

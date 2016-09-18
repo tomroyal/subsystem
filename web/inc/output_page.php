@@ -8,7 +8,7 @@ if ($ss_company == ""){
 };
 if ($ss_footer == ""){
 	$ss_footer = "Powered by SubSystem Payments";	
-};
+}; 
 
 // top
 ?>
@@ -16,6 +16,9 @@ if ($ss_footer == ""){
 <head>
   <meta charset="utf-8">
   <title><?echo($ss_company);?></title>
+  
+  <base href="<?echo($_SERVER['SERVER_NAME']);?>">
+  
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,8 +49,8 @@ if ($ss_footer == ""){
 <?php
 
 // content
-echo('<h3>'.$page_out[1].'</h3>');	
-echo('<p>'.$page_out[2].'</p>');			
+echo('<h3>'.$page_out[0].'</h3>');	
+echo('<p>'.$page_out[1].'</p>');			
 
 // bottom
 
