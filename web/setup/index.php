@@ -13,6 +13,9 @@ if (pg_num_rows($rs1) != 1){
 	if ($_POST['s'] != 1){
 		// not yet sent form
 		$page_form = '
+			Welcome. This tool creates the database setup required for SubSystem, and also the admin user account that you will use to manage it.</p>
+			<p>If you\'ve just deployed the app to Heroku, it will have created a free <a href="https://devcenter.heroku.com/articles/heroku-postgres-plans" target="new">Hobby Dev</a> database for you. This has row and uptime limits. You may wish to remove it now, and replace it with a paid-for database before continuing.</p>
+		
 			<form action="#" method="post">
 			<input type="hidden" name="s" value="1">
 			<div class="form-row">
