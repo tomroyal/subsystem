@@ -20,8 +20,6 @@ if ($ss_urlbase == ""){
   <meta charset="utf-8">
   <title><?echo($ss_company);?></title>
   
-  <base href="<?echo($ss_urlbase);?>">
-  
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
