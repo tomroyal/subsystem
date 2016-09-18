@@ -9,6 +9,9 @@ if ($ss_company == ""){
 if ($ss_footer == ""){
 	$ss_footer = "Powered by SubSystem Payments";	
 }; 
+if ($ss_urlbase == ""){
+	$ss_urlbase = 'https://'.$_SERVER['SERVER_NAME'];	// https should be required.	
+}; 
 
 // top
 ?>
@@ -17,7 +20,7 @@ if ($ss_footer == ""){
   <meta charset="utf-8">
   <title><?echo($ss_company);?></title>
   
-  <base href="<?echo($_SERVER['SERVER_NAME']);?>">
+  <base href="<?echo($ss_urlbase);?>">
   
   <meta name="description" content="">
   <meta name="author" content="">
@@ -29,8 +32,8 @@ if ($ss_footer == ""){
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="./inc/css/normalize.css">
-  <link rel="stylesheet" href="./inc/css/skeleton.css">
+  <link rel="stylesheet" href="/inc/css/normalize.css">
+  <link rel="stylesheet" href="/inc/css/skeleton.css">
 
 </head>
 <body>
