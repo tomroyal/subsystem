@@ -16,6 +16,14 @@ if (pg_num_rows($rs1) != 1){
 			<form action="#" method="post">
 			<input type="hidden" name="s" value="1">
 			<div class="form-row">
+                <label>Company or Business Name</label>
+                <input type="text" size="40" autocomplete="off" name="c1" />
+            </div>
+            <div class="form-row">
+                <label>System URL (include https://)</label>
+                <input type="text" size="40" autocomplete="off" value = "https://'.$_SERVER['SERVER_NAME'].'"name="u1" />
+            </div>
+			<div class="form-row">
                 <label>Your Email Address</label>
                 <input type="email" size="40" autocomplete="off" name="e1" />
             </div>
@@ -27,10 +35,7 @@ if (pg_num_rows($rs1) != 1){
                 <label>Confirm Password</label>
                 <input type="password" size="40" autocomplete="off" name="p2" />
             </div>
-            <div class="form-row">
-                <label>Company or Business Name</label>
-                <input type="text" size="40" autocomplete="off" name="c1" />
-            </div>
+            
             <button type="submit" class="submit-button">Save Settings</button>
 		'; 
 		$page_out = array('SubSystem Setup',$page_form);		
