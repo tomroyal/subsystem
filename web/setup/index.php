@@ -44,7 +44,24 @@ if (pg_num_rows($rs1) != 1){
 		$page_out = array('SubSystem Setup',$page_form);		
 	}	
 	else {
-		// received form, process
+		// received form, process it
+		// get data from form
+		$f_company = $_POST['c1'];
+		$f_urlbase = $_POST['u1'];
+		$f_email = $_POST['e1'];
+		$f_pass1 = $_POST['p1'];
+		$f_pass2 = $_POST['p2'];
+		
+		// check data
+		$form_errors = 0;
+		$form_errortext = "";
+		
+		if ($f_pass1 != $f_pass2){
+			$form_errors = 1;
+			$form_errortext = "Passwords did not match.";	
+		};
+		// todo
+		
 	};
 }
 else {
