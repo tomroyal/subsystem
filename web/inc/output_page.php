@@ -32,8 +32,8 @@ if ($ss_urlbase == ""){
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="/inc/css/normalize.css">
-  <link rel="stylesheet" href="/inc/css/skeleton.css">
+  <link rel="stylesheet" href="<?echo($ss_urlbase);?>/inc/css/normalize.css">
+  <link rel="stylesheet" href="<?echo($ss_urlbase);?>/inc/css/skeleton.css">
 
 </head>
 <body>
