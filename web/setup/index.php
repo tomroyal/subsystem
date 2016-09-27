@@ -59,73 +59,86 @@ if (pg_num_rows($rs1) != 1){
 		if ($f_pass1 != $f_pass2){
 			$form_errors = 1;
 			$form_errortext = "Passwords did not match.";	
+
 		};
-		
-		// create plans table
-		$sq1 = 'CREATE TABLE '.$schemaname.'.plans
-		(
-			id sequence,
-			planid character varying (200),
-			plandesc character varying (500),
-			character varying (500)
-		)';
-		$rs1 = pg_query($con, $sq1);
-		
-		// create payments table
-		$sq1 = 'CREATE TABLE '.$schemaname.'.payments
-		(
-			id sequence,
-			token character varying (255),
-			singleamount integer,
-			paymentplan  integer,
-			email character varying (255),
-			name character varying (255),
-			invoice character varying (255),
-			description character varying (500),
-			paid integer
-		)';
-		$rs1 = pg_query($con, $sq1);
-		
-		// create customer table
-		$sq1 = 'CREATE TABLE '.$schemaname.'.customers
-		(
-			id sequence,
-			custid character varying (255),
-			custemail character varying (255),
-			custname  character varying (500),
-			custplan integer,
-			token character varying (255)
-		)';
-		$rs1 = pg_query($con, $sq1);
-		
-		// create admin table
-		$sq1 = 'CREATE TABLE '.$schemaname.'.admin
-		(
-			id sequence,
-			adminemail character varying (255),
-			adminpass character varying (255),
-			adminlevel integer,
-			resettoken character varying (255)
-		)';
-		$rs1 = pg_query($con, $sq1);
-		
-		// create config table
-		$sq1 = 'CREATE TABLE '.$schemaname.'.config 
-		(
-			company_name character varying (200),
-			footer_text character varying (2000),
-			url_base character varying (500)
-		)';
-		$rs1 = pg_query($con, $sq1);
-		
-		// create super-admin user for this person
-		$f_hashedpass = password_hash($f_pass1, PASSWORD_BCRYPT);
-		$sq1 = 'INSERT INTO '.$schemaname.'.admin (adminemail, adminpass, adminlevel) VALUES (\''.$f_email.'\',\''.$f_hashedpass.'\',\'2\')'; // 2 as super-admin, 1 for standard admin
-		$rs1 = pg_query($con, $sq1);
-		
-		// setup complete
-		$page_out = array('Congratulations','Setup complete! You can now log in.');
-		
+
+		// finished check
+		if ($form_errors == 1){
+			// error, so display it
+			$page_out = array('Error',$form_errortext);
+		}
+		else {
+			// form ok, do setup
+			
+			// create schema
+			$sq1 = 'CREATE SCHEMA '.$schemaname;
+			$rs1 = pg_query($con, $sq1);
+			
+			// create plans table
+			$sq1 = 'CREATE TABLE '.$schemaname.'.plans
+			(
+				id sequence,
+				planid character varying (200),
+				plandesc character varying (500),
+				character varying (500)
+			)';
+			$rs1 = pg_query($con, $sq1);
+			
+			// create payments table
+			$sq1 = 'CREATE TABLE '.$schemaname.'.payments
+			(
+				id sequence,
+				token character varying (255),
+				singleamount integer,
+				paymentplan  integer,
+				email character varying (255),
+				name character varying (255),
+				invoice character varying (255),
+				description character varying (500),
+				paid integer
+			)';
+			$rs1 = pg_query($con, $sq1);
+			
+			// create customer table
+			$sq1 = 'CREATE TABLE '.$schemaname.'.customers
+			(
+				id sequence,
+				custid character varying (255),
+				custemail character varying (255),
+				custname  character varying (500),
+				custplan integer,
+				token character varying (255)
+			)';
+			$rs1 = pg_query($con, $sq1);
+			
+			// create admin table
+			$sq1 = 'CREATE TABLE '.$schemaname.'.admin
+			(
+				id sequence,
+				adminemail character varying (255),
+				adminpass character varying (255),
+				adminlevel integer,
+				resettoken character varying (255)
+			)';
+			$rs1 = pg_query($con, $sq1);
+			
+			// create config table
+			$sq1 = 'CREATE TABLE '.$schemaname.'.config 
+			(
+				company_name character varying (200),
+				footer_text character varying (2000),
+				url_base character varying (500)
+			)';
+			$rs1 = pg_query($con, $sq1);
+			
+			// create super-admin user for this person
+			$f_hashedpass = password_hash($f_pass1, PASSWORD_BCRYPT);
+			$sq1 = 'INSERT INTO '.$schemaname.'.admin (adminemail, adminpass, adminlevel) VALUES (\''.$f_email.'\',\''.$f_hashedpass.'\',\'2\')'; // 2 as super-admin, 1 for standard admin
+			$rs1 = pg_query($con, $sq1);
+			
+			// setup complete
+			$page_out = array('Congratulations','Setup complete! You can now log in.');
+		};
 	};
 }
 else {
